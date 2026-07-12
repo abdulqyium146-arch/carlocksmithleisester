@@ -10,6 +10,7 @@ import {
   buildPageGraph, buildBreadcrumbSchema, buildFAQSchema,
   buildBusinessSchema, buildOrganizationSchema, buildWebSiteSchema
 } from '@/lib/schema';
+import { VideoSection } from '@/components/VideoSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
@@ -266,6 +267,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* VIDEOS */}
+      <VideoSection />
 
       {/* AREAS */}
       <section className="section-padding bg-white" aria-labelledby="areas-heading">

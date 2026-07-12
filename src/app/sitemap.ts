@@ -69,5 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // Note: Video Sitemap is served separately at /video-sitemap.xml
+  // Submit both /sitemap.xml and /video-sitemap.xml in Google Search Console.
   return [...staticRoutes, ...serviceRoutes, ...areaRoutes];
 }

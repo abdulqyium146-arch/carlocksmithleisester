@@ -5,6 +5,8 @@ import { BUSINESS, SITE_URL } from '@/lib/constants';
 import { buildPageGraph, buildBreadcrumbSchema, buildServiceSchema, buildFAQSchema } from '@/lib/schema';
 import { FAQBlock } from '@/components/FAQBlock';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { VideoPlayer } from '@/components/VideoPlayer';
+import { VIDEOS, buildVideoObjectSchema } from '@/lib/videos';
 
 export const metadata: Metadata = {
   title: 'Emergency Car Lockout Leicester | Locked Out of Your Car? Call 24/7',
@@ -49,6 +51,7 @@ const schema = buildPageGraph([
     slug: 'car-lockout',
   }),
   buildFAQSchema(FAQS),
+  buildVideoObjectSchema(VIDEOS[0]),
 ]);
 
 export default function CarLockoutPage() {
@@ -114,6 +117,17 @@ export default function CarLockoutPage() {
       </section>
 
       {/* Main content */}
+      {/* VIDEO — real job footage boosts dwell time and trust */}
+      <section className="bg-slate-900 py-12">
+        <div className="container-lg max-w-3xl">
+          <h2 className="mb-2 text-xl font-bold text-white">See It in Action</h2>
+          <p className="mb-6 text-sm text-slate-400">
+            Real footage of our technician completing an emergency car lockout in Leicester — no damage, no drama.
+          </p>
+          <VideoPlayer video={VIDEOS[0]} includeSchema={false} />
+        </div>
+      </section>
+
       <section className="section-padding bg-white">
         <div className="container-lg max-w-3xl">
           <h2 className="mb-5 text-2xl font-bold text-slate-900">

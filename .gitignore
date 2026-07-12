@@ -33,8 +33,9 @@ yarn-error.log*
 .idea/
 .vscode/
 
-# legacy files from old site — not part of this project
-srcappabout/
-srcappapicontact/
-srcappprivacy-policy/
+# legacy files from old site in Desktop root — not part of this project
+srcapp*/
 *.swf
+
+# Videos in public/videos/ ARE tracked in git (14MB total, fine for Vercel free tier).
+# If the repo grows large with future video additions, migrate to Cloudinary or Bunny.net CDN.

@@ -5,6 +5,8 @@ import { BUSINESS, SITE_URL } from '@/lib/constants';
 import { buildPageGraph, buildBreadcrumbSchema, buildServiceSchema, buildFAQSchema } from '@/lib/schema';
 import { FAQBlock } from '@/components/FAQBlock';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { VideoPlayer } from '@/components/VideoPlayer';
+import { VIDEOS, buildVideoObjectSchema } from '@/lib/videos';
 
 export const metadata: Metadata = {
   title: 'Car Key Programming Leicester | Transponder & Remote Key Programming',
@@ -48,6 +50,7 @@ const schema = buildPageGraph([
     slug: 'car-key-programming',
   }),
   buildFAQSchema(FAQS),
+  buildVideoObjectSchema(VIDEOS[1]),
 ]);
 
 export default function CarKeyProgrammingPage() {
@@ -73,6 +76,17 @@ export default function CarKeyProgrammingPage() {
             <Phone className="h-5 w-5" aria-hidden="true" />
             {BUSINESS.phoneDisplay}
           </a>
+        </div>
+      </section>
+
+      {/* VIDEO */}
+      <section className="bg-slate-900 py-12">
+        <div className="container-lg max-w-3xl">
+          <h2 className="mb-2 text-xl font-bold text-white">Watch Transponder Key Programming</h2>
+          <p className="mb-6 text-sm text-slate-400">
+            Real footage of our technician programming a transponder key on-site in Leicester.
+          </p>
+          <VideoPlayer video={VIDEOS[1]} includeSchema={false} />
         </div>
       </section>
 
