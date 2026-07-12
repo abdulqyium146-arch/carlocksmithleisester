@@ -35,6 +35,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
+
+  // ── Favicons & PWA manifest ──────────────────────────────────────────────
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'manifest', url: '/site.webmanifest' },
+    ],
+  },
+
+  // ── Open Graph ───────────────────────────────────────────────────────────
   openGraph: {
     type: 'website',
     locale: 'en_GB',
@@ -52,6 +69,8 @@ export const metadata: Metadata = {
       },
     ],
   },
+
+  // ── Twitter / X Card ─────────────────────────────────────────────────────
   twitter: {
     card: 'summary_large_image',
     title: 'Car Locksmith Leicester | 24/7 Auto, Residential & Commercial',
@@ -59,12 +78,16 @@ export const metadata: Metadata = {
       'Emergency car lockout, key cutting, key programming across Leicester. Typically arrives within 60 minutes.',
     images: ['/images/car-locksmith-leicester-og.jpg'],
   },
+
+  // ── Search engine verification ───────────────────────────────────────────
   verification: {
     google: '6T4omoaJduvH64AgGG7CC-O5gjLUuZENnGsN4axoSNE',
     other: {
       'msvalidate.01': '[INSERT BING WEBMASTER VERIFICATION CODE]',
     },
   },
+
+  // ── Crawl directives ─────────────────────────────────────────────────────
   robots: {
     index: true,
     follow: true,
@@ -92,6 +115,15 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={inter.variable}>
       <head>
+        {/* Theme colour — colours the browser chrome on Android Chrome */}
+        <meta name="theme-color" content="#f97316" />
+
+        {/* iOS home-screen PWA */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Car Locksmith" />
+
+        {/* Structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}

@@ -1,0 +1,49 @@
+{
+  "name": "Car Locksmith Leicester",
+  "short_name": "Car Locksmith",
+  "description": "24/7 emergency car lockout, key cutting and key programming across Leicester and Leicestershire.",
+  "lang": "en-GB",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#f97316",
+  "background_color": "#0f172a",
+  "categories": ["automotive", "local-business"],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Call Now — 24/7",
+      "short_name": "Call",
+      "description": "Call Car Locksmith Leicester immediately",
+      "url": "tel:+447988388514",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Emergency Car Lockout",
+      "short_name": "Lockout",
+      "description": "Locked out? Get help now",
+      "url": "/services/car-lockout",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Get a Quote",
+      "short_name": "Quote",
+      "description": "Request a free quote",
+      "url": "/contact",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
