@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import { Phone } from 'lucide-react';
-import { BUSINESS, SITE_URL } from '@/lib/constants';
+import Link from 'next/link';
+import { Phone, ChevronRight } from 'lucide-react';
+import { BUSINESS, SERVICES, SITE_URL } from '@/lib/constants';
 import { buildPageGraph, buildBreadcrumbSchema, buildFAQSchema } from '@/lib/schema';
 import { Breadcrumb } from '@/components/Breadcrumb';
 
@@ -150,10 +151,18 @@ export default function FAQPage() {
             Frequently Asked Questions
           </h1>
           <p className="text-lg text-slate-300">
-            Answers to the most common questions about our locksmith services in Leicester. Can&apos;t find what you&apos;re looking for?{' '}
+            Answers to the most common questions about our{' '}
+            <Link href="/services" className="font-semibold text-brand-400 hover:underline">
+              locksmith services
+            </Link>{' '}
+            in Leicester. Can&apos;t find what you&apos;re looking for?{' '}
             <a href={`tel:${BUSINESS.phone}`} className="font-semibold text-brand-400 hover:underline">
               Call us
             </a>{' '}
+            or{' '}
+            <Link href="/contact" className="font-semibold text-brand-400 hover:underline">
+              send a message
+            </Link>{' '}
             for free advice.
           </p>
         </div>
@@ -187,14 +196,41 @@ export default function FAQPage() {
         </div>
       </section>
 
+      {/* Explore Services */}
+      <section className="section-padding bg-slate-50">
+        <div className="container-lg max-w-3xl">
+          <h2 className="mb-2 text-xl font-bold text-slate-900">Explore Our Locksmith Services</h2>
+          <p className="mb-5 text-sm text-slate-500">
+            Each service page has its own detailed FAQs, process steps, and pricing guidance.
+          </p>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {SERVICES.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3 hover:border-brand-300 hover:shadow-sm"
+              >
+                <span className="text-sm font-medium text-slate-800">{service.name}</span>
+                <ChevronRight className="h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-brand-500 py-14 text-white">
         <div className="container-lg text-center">
           <h2 className="mb-3 text-2xl font-bold">Still have a question?</h2>
           <p className="mb-6 text-brand-100">Call us — we&apos;re always happy to advise before you commit to any work.</p>
-          <a href={`tel:${BUSINESS.phone}`} className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-xl font-bold text-brand-600 hover:bg-brand-50">
-            <Phone className="h-5 w-5" aria-hidden="true" />
-            {BUSINESS.phoneDisplay}
-          </a>
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <a href={`tel:${BUSINESS.phone}`} className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-xl font-bold text-brand-600 hover:bg-brand-50">
+              <Phone className="h-5 w-5" aria-hidden="true" />
+              {BUSINESS.phoneDisplay}
+            </a>
+            <Link href="/contact" className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-7 py-4 font-semibold text-white hover:bg-white/10">
+              Send a Message
+            </Link>
+          </div>
         </div>
       </section>
     </>

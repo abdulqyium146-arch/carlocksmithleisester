@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Phone, CheckCircle } from 'lucide-react';
-import { BUSINESS, SITE_URL } from '@/lib/constants';
+import { AREAS, BUSINESS, SITE_URL } from '@/lib/constants';
 import { buildPageGraph, buildBreadcrumbSchema, buildServiceSchema, buildFAQSchema } from '@/lib/schema';
 import { FAQBlock } from '@/components/FAQBlock';
 import { Breadcrumb } from '@/components/Breadcrumb';
@@ -137,6 +137,27 @@ export default function MotorbikeLocksmithPage() {
               <Link key={s.slug} href={`/services/${s.slug}`} className="rounded-xl border border-slate-200 p-5 hover:border-brand-300 hover:shadow-sm">
                 <h3 className="mb-1 font-bold text-slate-900">{s.name}</h3>
                 <p className="text-sm text-slate-500">{s.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service Areas */}
+      <section className="section-padding bg-slate-50">
+        <div className="container-lg">
+          <h2 className="mb-2 text-xl font-bold text-slate-900">Motorbike Locksmith — Areas We Cover</h2>
+          <p className="mb-5 text-sm text-slate-500">
+            We provide motorbike and scooter locksmith services across Leicester and all surrounding Leicestershire towns. Select your area for local service details.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {AREAS.map((area) => (
+              <Link
+                key={area.slug}
+                href={`/areas/${area.slug}`}
+                className="rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:border-brand-300 hover:text-brand-700"
+              >
+                {area.name}
               </Link>
             ))}
           </div>

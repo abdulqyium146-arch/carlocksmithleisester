@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
-import { BUSINESS, SITE_URL } from '@/lib/constants';
+import { AREAS, BUSINESS, SERVICES, SITE_URL } from '@/lib/constants';
 import { buildPageGraph, buildBreadcrumbSchema } from '@/lib/schema';
 import { ContactForm } from '@/components/ContactForm';
 import { Breadcrumb } from '@/components/Breadcrumb';
@@ -121,6 +122,43 @@ export default function ContactPage() {
             <div>
               <h2 className="mb-6 text-2xl font-bold text-slate-900">Send a Message</h2>
               <ContactForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services + Areas quick navigation */}
+      <section className="section-padding bg-slate-50">
+        <div className="container-lg">
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <h2 className="mb-4 text-lg font-bold text-slate-900">Our Services</h2>
+              <div className="space-y-1">
+                {SERVICES.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/services/${s.slug}`}
+                    className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-slate-700 hover:bg-white hover:text-brand-700"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-brand-400" aria-hidden="true" />
+                    {s.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2 className="mb-4 text-lg font-bold text-slate-900">Areas We Cover</h2>
+              <div className="flex flex-wrap gap-2">
+                {AREAS.map((area) => (
+                  <Link
+                    key={area.slug}
+                    href={`/areas/${area.slug}`}
+                    className="rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:border-brand-300 hover:text-brand-700"
+                  >
+                    {area.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>

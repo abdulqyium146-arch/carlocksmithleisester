@@ -160,6 +160,22 @@ export function buildFAQSchema(
   };
 }
 
+export function buildHowToSchema(opts: {
+  name: string;
+  steps: { name: string; text: string }[];
+}) {
+  return {
+    '@type': 'HowTo',
+    name: opts.name,
+    step: opts.steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
 export function buildPageGraph(schemas: object[]) {
   return {
     '@context': 'https://schema.org',

@@ -49,13 +49,21 @@ export default function AboutPage() {
             <div>
               <h2 className="mb-5 text-2xl font-bold text-slate-900">Our Story</h2>
               <p className="mb-4 text-slate-600 leading-relaxed">
-                Car Locksmith Leicester has operated in the Leicester area for over 10 years. We started with a focus on automotive locksmith work — car lockouts, key cutting, and key programming — and have grown to cover residential and commercial locksmith services as well, while keeping the same standards that built our original reputation.
+                Car Locksmith Leicester has operated in the Leicester area for over 10 years. We started with a focus on automotive locksmith work —{' '}
+                <Link href="/services/car-lockout" className="font-semibold text-brand-600 hover:underline">car lockouts</Link>,{' '}
+                <Link href="/services/car-key-cutting" className="font-semibold text-brand-600 hover:underline">key cutting</Link>, and{' '}
+                <Link href="/services/car-key-programming" className="font-semibold text-brand-600 hover:underline">key programming</Link>{' '}
+                — and have grown to cover{' '}
+                <Link href="/services/residential-locksmith" className="font-semibold text-brand-600 hover:underline">residential</Link> and{' '}
+                <Link href="/services/commercial-locksmith" className="font-semibold text-brand-600 hover:underline">commercial locksmith services</Link>{' '}
+                as well, while keeping the same standards that built our original reputation.
               </p>
               <p className="mb-4 text-slate-600 leading-relaxed">
                 We are a local, independent business — not a call centre or a franchise. When you call us, you speak directly to our team, and the technician who attends your job is one of our own trained staff, not a subcontracted third party.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                Our reputation in Leicester is built entirely on the quality of our work, honest pricing, and treating every customer with respect. We do not use high-pressure sales tactics and we never start a job without agreeing the price first.
+                Our reputation in Leicester is built entirely on the quality of our work, honest pricing, and treating every customer with respect. We do not use high-pressure sales tactics and we never start a job without agreeing the price first. Have a question before you call?{' '}
+                <Link href="/faq" className="font-semibold text-brand-600 hover:underline">Read our FAQ</Link>.
               </p>
             </div>
 

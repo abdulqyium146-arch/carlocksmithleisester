@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Phone, CheckCircle, Clock, ShieldCheck } from 'lucide-react';
-import { BUSINESS, SITE_URL } from '@/lib/constants';
-import { buildPageGraph, buildBreadcrumbSchema, buildServiceSchema, buildFAQSchema } from '@/lib/schema';
+import { AREAS, BUSINESS, SITE_URL } from '@/lib/constants';
+import { buildPageGraph, buildBreadcrumbSchema, buildServiceSchema, buildFAQSchema, buildHowToSchema } from '@/lib/schema';
 import { FAQBlock } from '@/components/FAQBlock';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { VideoPlayer } from '@/components/VideoPlayer';
@@ -38,6 +38,25 @@ const FAQS = [
   },
 ];
 
+const PROCESS_STEPS = [
+  {
+    title: 'Call Car Locksmith Leicester',
+    body: `Ring us any time on ${BUSINESS.phoneDisplay}. We'll ask for your location, the make and model of your vehicle, and a brief description of what happened.`,
+  },
+  {
+    title: 'We dispatch a technician',
+    body: 'A local technician will be dispatched to your location immediately. We aim to arrive within 60 minutes across Leicester and Leicestershire.',
+  },
+  {
+    title: 'We gain entry safely',
+    body: 'Using specialist non-destructive tools, we open your vehicle without causing any damage. In most cases this takes just a few minutes once we\'re on-site.',
+  },
+  {
+    title: 'You\'re back on the road',
+    body: 'Once inside, we\'ll check the vehicle is secure before leaving. If you need a replacement key or spare key cut, we can do that on-site too.',
+  },
+];
+
 const schema = buildPageGraph([
   buildBreadcrumbSchema([
     { name: 'Home', item: SITE_URL },
@@ -51,6 +70,10 @@ const schema = buildPageGraph([
     slug: 'car-lockout',
   }),
   buildFAQSchema(FAQS),
+  buildHowToSchema({
+    name: 'How to Get Into a Locked Car in Leicester',
+    steps: PROCESS_STEPS.map((s) => ({ name: s.title, text: s.body })),
+  }),
   buildVideoObjectSchema(VIDEOS[0]),
 ]);
 
@@ -116,8 +139,7 @@ export default function CarLockoutPage() {
         </div>
       </section>
 
-      {/* Main content */}
-      {/* VIDEO — real job footage boosts dwell time and trust */}
+      {/* VIDEO */}
       <section className="bg-slate-900 py-12">
         <div className="container-lg max-w-3xl">
           <h2 className="mb-2 text-xl font-bold text-white">See It in Action</h2>
@@ -144,20 +166,23 @@ export default function CarLockoutPage() {
             Our technicians use professional, non-destructive tools to gain entry to your vehicle. This means no damage to your paintwork, door seals, or locking mechanism — unlike the &ldquo;slim-jim&rdquo; techniques sometimes used by less experienced operators, which can crack seals, scratch paint, and trigger airbag sensors.
           </p>
           <p className="mb-8 text-slate-600 leading-relaxed">
-            We cover all major makes and models — including BMW, Mercedes, Audi, Toyota, Ford, Vauxhall, and many more — and can handle vehicles with complex electronic locking systems as well as traditional mechanical locks.
+            We cover all major makes and models — including BMW, Mercedes, Audi, Toyota, Ford, Vauxhall, and many more — and can handle vehicles with complex electronic locking systems as well as traditional mechanical locks. See our{' '}
+            <Link href="/faq" className="font-semibold text-brand-600 hover:underline">
+              frequently asked questions
+            </Link>{' '}
+            for more detail, or{' '}
+            <Link href="/about" className="font-semibold text-brand-600 hover:underline">
+              learn about us
+            </Link>{' '}
+            before you call.
           </p>
 
           <h2 className="mb-5 text-2xl font-bold text-slate-900">Our Car Lockout Process</h2>
           <ol className="mb-8 space-y-4">
-            {[
-              { step: 1, title: 'Call us', body: 'Ring us any time on ' + BUSINESS.phoneDisplay + '. We\'ll ask for your location, the make and model of your vehicle, and a brief description of what happened.' },
-              { step: 2, title: 'We dispatch a technician', body: 'A local technician will be dispatched to your location immediately. We aim to arrive within 60 minutes across Leicester and Leicestershire.' },
-              { step: 3, title: 'We gain entry safely', body: 'Using specialist non-destructive tools, we open your vehicle without causing any damage. In most cases this takes just a few minutes once we\'re on-site.' },
-              { step: 4, title: 'You\'re back on the road', body: 'Once inside, we\'ll also check the vehicle is secure before leaving. If you need a replacement key or spare cut, we can do that on-site too.' },
-            ].map(({ step, title, body }) => (
-              <li key={step} className="flex gap-4">
+            {PROCESS_STEPS.map(({ title, body }, i) => (
+              <li key={title} className="flex gap-4">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-500 text-sm font-bold text-white">
-                  {step}
+                  {i + 1}
                 </span>
                 <div>
                   <h3 className="font-bold text-slate-900">{title}</h3>
@@ -200,6 +225,27 @@ export default function CarLockoutPage() {
               >
                 <h3 className="mb-1 font-bold text-slate-900">{s.name}</h3>
                 <p className="text-sm text-slate-500">{s.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service Areas */}
+      <section className="section-padding bg-slate-50">
+        <div className="container-lg">
+          <h2 className="mb-2 text-xl font-bold text-slate-900">Emergency Car Lockout — Areas We Cover</h2>
+          <p className="mb-5 text-sm text-slate-500">
+            Based in Leicester, we respond to car lockouts across all surrounding Leicestershire towns. Select your area for local service details.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {AREAS.map((area) => (
+              <Link
+                key={area.slug}
+                href={`/areas/${area.slug}`}
+                className="rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:border-brand-300 hover:text-brand-700"
+              >
+                {area.name}
               </Link>
             ))}
           </div>
