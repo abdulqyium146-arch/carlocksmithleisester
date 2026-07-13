@@ -96,8 +96,14 @@ export default function CarKeyProgrammingPage() {
           <p className="mb-4 text-slate-600 leading-relaxed">
             Modern vehicles use electronic immobilisers to prevent theft. A <strong>transponder key</strong> contains a microchip that communicates with your car&apos;s Engine Control Unit (ECU). For the engine to start, the chip must broadcast the correct encrypted code — a code that has to be programmed specifically to your vehicle.
           </p>
-          <p className="mb-8 text-slate-600 leading-relaxed">
+          <p className="mb-4 text-slate-600 leading-relaxed">
             Car Locksmith Leicester uses professional-grade diagnostic and key-programming equipment to pair new keys — whether transponder chips, remote fobs, or push-start proximity keys — directly to your vehicle&apos;s ECU on-site, without needing to visit a dealer.
+          </p>
+          <p className="mb-8 text-slate-600 leading-relaxed">
+            Want to understand how transponder technology works? Read our plain-English guide:{' '}
+            <Link href="/guides/what-is-a-transponder-key" className="font-semibold text-brand-600 hover:underline">
+              What is a Transponder Key?
+            </Link>
           </p>
 
           <h2 className="mb-5 text-2xl font-bold text-slate-900">Key Types We Programme</h2>

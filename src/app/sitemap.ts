@@ -69,7 +69,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const guideRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/pricing`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/guides`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guides/what-to-do-when-locked-out-of-car`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guides/car-key-replacement-cost-leicester`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guides/what-is-a-transponder-key`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+  ];
+
   // Note: Video Sitemap is served separately at /video-sitemap.xml
   // Submit both /sitemap.xml and /video-sitemap.xml in Google Search Console.
-  return [...staticRoutes, ...serviceRoutes, ...areaRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...areaRoutes, ...guideRoutes];
 }

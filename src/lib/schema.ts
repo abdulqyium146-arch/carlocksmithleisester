@@ -160,6 +160,26 @@ export function buildFAQSchema(
   };
 }
 
+export function buildArticleSchema(opts: {
+  headline: string;
+  description: string;
+  slug: string;
+  datePublished: string;
+  dateModified?: string;
+}) {
+  return {
+    '@type': 'Article',
+    headline: opts.headline,
+    description: opts.description,
+    url: `${SITE_URL}/${opts.slug}`,
+    datePublished: opts.datePublished,
+    dateModified: opts.dateModified ?? opts.datePublished,
+    author: { '@id': `${SITE_URL}/#organization` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/${opts.slug}` },
+  };
+}
+
 export function buildHowToSchema(opts: {
   name: string;
   steps: { name: string; text: string }[];

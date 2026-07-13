@@ -33,6 +33,16 @@ const NAV = [
       { label: 'Market Harborough', href: '/areas/market-harborough' },
     ],
   },
+  {
+    label: 'Resources',
+    href: '/guides',
+    children: [
+      { label: 'Pricing Guide', href: '/pricing' },
+      { label: 'What to Do When Locked Out', href: '/guides/what-to-do-when-locked-out-of-car' },
+      { label: 'Car Key Replacement Cost', href: '/guides/car-key-replacement-cost-leicester' },
+      { label: 'What is a Transponder Key?', href: '/guides/what-is-a-transponder-key' },
+    ],
+  },
   { label: 'About', href: '/about' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
@@ -84,7 +94,7 @@ export function Header() {
                         role="menuitem"
                         onClick={() => setOpenDropdown(null)}
                       >
-                        {item.label === 'Services' ? 'All Services →' : 'All Areas →'}
+                        {item.label === 'Services' ? 'All Services →' : item.label === 'Areas' ? 'All Areas →' : 'All Guides →'}
                       </Link>
                     </li>
                     {item.children.map((child) => (

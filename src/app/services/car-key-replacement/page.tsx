@@ -106,7 +106,11 @@ export default function CarKeyReplacementPage() {
           <div className="mb-8 rounded-xl border border-amber-200 bg-amber-50 p-6">
             <h3 className="mb-2 font-bold text-amber-800">Much cheaper than a main dealer</h3>
             <p className="text-sm text-amber-700 leading-relaxed">
-              Main dealer car key replacement often costs £200–£600+ and can take 3–5 days as the key is ordered in. We carry stock of key blanks for most common vehicles and can usually complete the replacement in under an hour at a fraction of the dealer price. Call us for a free, no-obligation quote.
+              Main dealer car key replacement often costs £200–£600+ and can take 3–5 days as the key is ordered in. We carry stock of key blanks for most common vehicles and can usually complete the replacement in under an hour at a fraction of the dealer price. Call us for a free, no-obligation quote. For a full breakdown, see our{' '}
+              <Link href="/guides/car-key-replacement-cost-leicester" className="font-semibold underline hover:text-amber-900">
+                car key replacement cost guide
+              </Link>
+              .
             </p>
           </div>
 

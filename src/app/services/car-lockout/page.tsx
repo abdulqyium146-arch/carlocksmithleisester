@@ -165,7 +165,7 @@ export default function CarLockoutPage() {
           <p className="mb-4 text-slate-600 leading-relaxed">
             Our technicians use professional, non-destructive tools to gain entry to your vehicle. This means no damage to your paintwork, door seals, or locking mechanism — unlike the &ldquo;slim-jim&rdquo; techniques sometimes used by less experienced operators, which can crack seals, scratch paint, and trigger airbag sensors.
           </p>
-          <p className="mb-8 text-slate-600 leading-relaxed">
+          <p className="mb-4 text-slate-600 leading-relaxed">
             We cover all major makes and models — including BMW, Mercedes, Audi, Toyota, Ford, Vauxhall, and many more — and can handle vehicles with complex electronic locking systems as well as traditional mechanical locks. See our{' '}
             <Link href="/faq" className="font-semibold text-brand-600 hover:underline">
               frequently asked questions
@@ -175,6 +175,13 @@ export default function CarLockoutPage() {
               learn about us
             </Link>{' '}
             before you call.
+          </p>
+          <p className="mb-8 text-slate-600 leading-relaxed">
+            Not sure what to do next? Read our step-by-step guide:{' '}
+            <Link href="/guides/what-to-do-when-locked-out-of-car" className="font-semibold text-brand-600 hover:underline">
+              What to Do When Locked Out of Your Car
+            </Link>
+            .
           </p>
 
           <h2 className="mb-5 text-2xl font-bold text-slate-900">Our Car Lockout Process</h2>

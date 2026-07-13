@@ -76,10 +76,10 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Main footer — 5 semantic columns */}
-      <div className="container-lg grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
+      {/* Main footer — 6 semantic columns */}
+      <div className="container-lg grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-6">
         {/* Brand */}
-        <div className="sm:col-span-2 lg:col-span-1">
+        <div className="sm:col-span-2 lg:col-span-2">
           <Logo variant="dark" size="md" />
           <p className="mt-1 text-sm text-slate-400 leading-relaxed">
             Car Locksmith Leicester — auto, residential, and commercial locksmith serving Leicester and Leicestershire for over 10 years. Available 24/7.
@@ -149,6 +149,26 @@ export function Footer() {
                   href={l.href}
                   className="text-sm text-slate-400 hover:text-brand-400"
                 >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Resources */}
+        <div>
+          <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-100">Guides & Pricing</h3>
+          <ul className="space-y-2" role="list">
+            {[
+              { label: 'Locksmith Pricing', href: '/pricing' },
+              { label: 'What to Do When Locked Out', href: '/guides/what-to-do-when-locked-out-of-car' },
+              { label: 'Car Key Replacement Cost', href: '/guides/car-key-replacement-cost-leicester' },
+              { label: 'What is a Transponder Key?', href: '/guides/what-is-a-transponder-key' },
+              { label: 'All Guides →', href: '/guides' },
+            ].map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="text-sm text-slate-400 hover:text-brand-400">
                   {l.label}
                 </Link>
               </li>
