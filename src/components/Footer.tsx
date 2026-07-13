@@ -3,12 +3,32 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { BUSINESS, SERVICES, AREAS } from '@/lib/constants';
 import { Logo } from '@/components/Logo';
 
+const EMERGENCY_LINKS = [
+  { label: 'Emergency Car Lockout', href: '/services/car-lockout' },
+  { label: 'Lost Car Keys', href: '/services/car-key-replacement' },
+  { label: 'Locked Keys in Car', href: '/services/car-lockout' },
+  { label: 'Broken Key in Ignition', href: '/services/broken-key-extraction' },
+  { label: 'Home Lockout', href: '/services/residential-locksmith' },
+  { label: 'Business Lockout', href: '/services/commercial-locksmith' },
+];
+
+const POPULAR_SEARCHES = [
+  { label: 'Car Locksmith Leicester', href: '/' },
+  { label: 'Car Key Replacement Leicester', href: '/services/car-key-replacement' },
+  { label: 'Emergency Car Lockout Leicester', href: '/services/car-lockout' },
+  { label: 'Car Key Programming Leicester', href: '/services/car-key-programming' },
+  { label: 'Locksmith Near Me Leicester', href: '/areas/leicester' },
+  { label: 'Auto Locksmith Leicester', href: '/services/car-lockout' },
+  { label: 'Car Key Cutting Leicester', href: '/services/car-key-cutting' },
+  { label: 'Motorbike Locksmith Leicester', href: '/services/motorbike-locksmith' },
+];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-slate-950 text-slate-300">
-      {/* NAP strip — consistent, exact NAP used for entity signals */}
+      {/* NAP strip — consistent NAP for entity signals */}
       <div className="border-b border-slate-800 bg-slate-900">
         <div className="container-lg grid grid-cols-1 gap-6 py-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="flex items-start gap-3">
@@ -56,14 +76,23 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Main footer */}
-      <div className="container-lg grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Main footer — 5 semantic columns */}
+      <div className="container-lg grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
         {/* Brand */}
-        <div className="lg:col-span-1">
+        <div className="sm:col-span-2 lg:col-span-1">
           <Logo variant="dark" size="md" />
-          <p className="text-sm text-slate-400 leading-relaxed">
-            Car Locksmith Leicester is an auto, residential, and commercial locksmith based in Leicester, UK, providing emergency vehicle entry, key cutting, key programming, and lock replacement services across Leicester and the surrounding area.
+          <p className="mt-1 text-sm text-slate-400 leading-relaxed">
+            Car Locksmith Leicester — auto, residential, and commercial locksmith serving Leicester and Leicestershire for over 10 years. Available 24/7.
           </p>
+          <div className="mt-5 space-y-2">
+            <div className="inline-flex items-center gap-2 rounded-md bg-slate-800 px-3 py-2 text-xs text-slate-300">
+              <span className="text-green-400">✓</span> 10+ Years Experience
+            </div>
+            <br />
+            <div className="inline-flex items-center gap-2 rounded-md bg-slate-800 px-3 py-2 text-xs text-slate-300">
+              <span className="text-green-400">✓</span> No Vehicle Damage Guarantee
+            </div>
+          </div>
         </div>
 
         {/* Services */}
@@ -80,6 +109,11 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li className="pt-1">
+              <Link href="/services" className="text-sm font-semibold text-brand-400 hover:text-brand-300">
+                All Services →
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -87,7 +121,7 @@ export function Footer() {
         <div>
           <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-100">Areas Covered</h3>
           <ul className="space-y-2" role="list">
-            {AREAS.slice(0, 10).map((a) => (
+            {AREAS.slice(0, 9).map((a) => (
               <li key={a.slug}>
                 <Link
                   href={`/areas/${a.slug}`}
@@ -97,11 +131,28 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            <li>
+            <li className="pt-1">
               <Link href="/areas" className="text-sm font-semibold text-brand-400 hover:text-brand-300">
                 View all areas →
               </Link>
             </li>
+          </ul>
+        </div>
+
+        {/* Emergency Services */}
+        <div>
+          <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-100">Emergency Services</h3>
+          <ul className="space-y-2" role="list">
+            {EMERGENCY_LINKS.map((l) => (
+              <li key={l.label}>
+                <Link
+                  href={l.href}
+                  className="text-sm text-slate-400 hover:text-brand-400"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -123,23 +174,30 @@ export function Footer() {
               </li>
             ))}
           </ul>
+        </div>
+      </div>
 
-          {/* Trust badges */}
-          <div className="mt-6 space-y-2">
-            <div className="inline-flex items-center gap-2 rounded-md bg-slate-800 px-3 py-2 text-xs text-slate-300">
-              <span className="text-green-400">✓</span> 10+ Years Experience
-            </div>
-            <br />
-            <div className="inline-flex items-center gap-2 rounded-md bg-slate-800 px-3 py-2 text-xs text-slate-300">
-              <span className="text-green-400">✓</span> No Vehicle Damage Guarantee
-            </div>
+      {/* Popular Searches strip */}
+      <div className="border-t border-slate-800 bg-slate-900/50">
+        <div className="container-lg py-6">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Popular Searches</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
+            {POPULAR_SEARCHES.map((s) => (
+              <Link
+                key={s.label}
+                href={s.href}
+                className="text-sm text-slate-400 hover:text-brand-400"
+              >
+                {s.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="border-t border-slate-800">
-        <div className="container-lg flex flex-col items-center justify-between gap-3 py-6 text-xs text-slate-500 sm:flex-row">
+        <div className="container-lg flex flex-col items-center justify-between gap-3 py-5 text-xs text-slate-500 sm:flex-row">
           <p>
             © {currentYear} {BUSINESS.name}. All rights reserved.
           </p>

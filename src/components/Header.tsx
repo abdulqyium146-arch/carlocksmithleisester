@@ -21,7 +21,18 @@ const NAV = [
       { label: 'Commercial Locksmith', href: '/services/commercial-locksmith' },
     ],
   },
-  { label: 'Areas Covered', href: '/areas' },
+  {
+    label: 'Areas',
+    href: '/areas',
+    children: [
+      { label: 'Leicester', href: '/areas/leicester' },
+      { label: 'Oadby', href: '/areas/oadby' },
+      { label: 'Wigston', href: '/areas/wigston' },
+      { label: 'Hinckley', href: '/areas/hinckley' },
+      { label: 'Loughborough', href: '/areas/loughborough' },
+      { label: 'Market Harborough', href: '/areas/market-harborough' },
+    ],
+  },
   { label: 'About', href: '/about' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
@@ -29,7 +40,11 @@ const NAV = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  function toggleDropdown(href: string) {
+    setOpenDropdown((v) => (v === href ? null : href));
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm">
@@ -46,27 +61,30 @@ export function Header() {
               <li key={item.href} className="relative">
                 <button
                   className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                  onClick={() => setServicesOpen((v) => !v)}
-                  aria-expanded={servicesOpen}
+                  onClick={() => toggleDropdown(item.href)}
+                  aria-expanded={openDropdown === item.href}
                   aria-haspopup="true"
                 >
                   {item.label}
-                  <ChevronDown className={`h-4 w-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${openDropdown === item.href ? 'rotate-180' : ''}`}
+                    aria-hidden="true"
+                  />
                 </button>
-                {servicesOpen && (
+                {openDropdown === item.href && (
                   <ul
                     className="absolute left-0 top-full z-50 mt-1 w-56 rounded-lg border border-slate-200 bg-white py-1 shadow-lg"
                     role="menu"
-                    onMouseLeave={() => setServicesOpen(false)}
+                    onMouseLeave={() => setOpenDropdown(null)}
                   >
                     <li role="none">
                       <Link
                         href={item.href}
                         className="block px-4 py-2 text-sm font-semibold text-brand-600 hover:bg-brand-50"
                         role="menuitem"
-                        onClick={() => setServicesOpen(false)}
+                        onClick={() => setOpenDropdown(null)}
                       >
-                        All Services →
+                        {item.label === 'Services' ? 'All Services →' : 'All Areas →'}
                       </Link>
                     </li>
                     {item.children.map((child) => (
@@ -75,7 +93,7 @@ export function Header() {
                           href={child.href}
                           className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900"
                           role="menuitem"
-                          onClick={() => setServicesOpen(false)}
+                          onClick={() => setOpenDropdown(null)}
                         >
                           {child.label}
                         </Link>
